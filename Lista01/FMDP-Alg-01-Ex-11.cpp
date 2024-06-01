@@ -13,14 +13,76 @@ graus, calcule e exiba a distância entre eles em quilômetros ao longo da super
 
 #include <iostream>
 #include <cmath>
-using namespace std;
+#include <limits>
+
+// Constante para a conversão de graus para radianos
+const double DEG_TO_RAD = M_PI / 180.0;
+
+// Constante para o raio da Terra em quilômetros
+const double EARTH_RADIUS_KM = 6371.0;
+
+// Função para converter graus em radianos
+double toRadians(double degree) {
+    return degree * DEG_TO_RAD;
+}
+
+// Função para calcular a distância entre dois pontos usando a fórmula da Haversine
+double haversineDistance(double lat1, double lon1, double lat2, double lon2) {
+    lat1 = toRadians(lat1);
+    lon1 = toRadians(lon1);
+    lat2 = toRadians(lat2);
+    lon2 = toRadians(lon2);
+
+    double dlat = lat2 - lat1;
+    double dlon = lon2 - lon1;
+
+    double a = std::sin(dlat / 2) * std::sin(dlat / 2) +
+               std::cos(lat1) * std::cos(lat2) * 
+               std::sin(dlon / 2) * std::sin(dlon / 2);
+    double c = 2 * std::atan2(std::sqrt(a), std::sqrt(1 - a));
+
+    return EARTH_RADIUS_KM * c;
+}
+
+// Função para validar entrada de dados e garantir que sejam números
+bool isValidInput(double &input) {
+    if (std::cin.fail()) {
+        std::cin.clear(); // Limpa o estado de erro da entrada
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignora a entrada inválida
+        return false;
+    }
+    return true;
+}
+
+// Função para obter a entrada do usuário de forma segura
+double getInput(const std::string &prompt) {
+    double value;
+    while (true) {
+        std::cout << prompt;
+        std::cin >> value;
+        if (isValidInput(value)) {
+            break;
+        } else {
+            std::cout << "Entrada inválida. Por favor, insira um número válido.\n";
+        }
+    }
+    return value;
+}
 
 int main() {
-    float lat1, lat2, long1, long2;
-    cout << "Greetings! Please enter the latitude and longitude of two points on Earth in degrees: ";
-    cin >> lat1 >> long1 >> lat2 >> long2;
-    float d = 6371.01 * acos(sin(lat1) * sin(lat2) + cos(lat1) * cos(lat2) * cos(long1 - long2));
-    cout << "The distance between the two points on Earth is " << d << " km." << endl;
+    std::cout << "Calculadora de Distância entre Dois Pontos na Terra usando a Fórmula da Haversine\n\n";
+
+    // Entrada de dados do usuário
+    double lat1 = getInput("Insira a latitude do primeiro ponto (em graus): ");
+    double lon1 = getInput("Insira a longitude do primeiro ponto (em graus): ");
+    double lat2 = getInput("Insira a latitude do segundo ponto (em graus): ");
+    double lon2 = getInput("Insira a longitude do segundo ponto (em graus): ");
+
+    // Cálculo da distância usando a fórmula da Haversine
+    double distance = haversineDistance(lat1, lon1, lat2, lon2);
+
+    // Saída da distância calculada
+    std::cout << "A distância entre os dois pontos é: " << distance << " km\n";
+
     return 0;
-    main();
 }
