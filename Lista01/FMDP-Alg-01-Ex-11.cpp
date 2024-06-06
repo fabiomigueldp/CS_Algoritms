@@ -7,8 +7,14 @@ pontos ao longo da superfície da terra é dada por:
 Crie um programa Python que receba a latitude e a longitude de dois pontos na Terra em
 graus, calcule e exiba a distância entre eles em quilômetros ao longo da superfície.*/
 
-// Marco zero São Paulo 23° 33' 01" S 46° 38' 02"
-// Marco zero Nova York 40° 42′ 47″ N, 74° 00′ 49″
+// Lat São Paulo: -23.5505, Long São Paulo: -46.6333
+// Lat Nova York: 40.7128, Long Nova York: -74.0060
+// Distância esperada: 7685.63 km
+
+// Lat Tokyo: 35.6895, Long Tokyo: 139.6917
+// Lat Sydney: -33.8688, Long Sydney: 151.2093
+// Lat Londres: 51.5074, Long Londres: -0.1278
+// Lat Moscou: 55.7558, Long Moscou: 37.6176
 
 
 #include <iostream>
