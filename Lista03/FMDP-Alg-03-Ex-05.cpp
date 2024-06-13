@@ -6,27 +6,33 @@ quantidade de dias daquele mês. Caso o mês seja fevereiro, sua mensagem pode i
 
 #include <iostream>
 #include <string>
-#include <cctype>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
 int main() {
+    vector<string> meses = {"janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho",
+                            "agosto", "setembro", "outubro", "novembro", "dezembro"};
+    vector<string> dias = {"31", "28 ou 29", "31", "30", "31", "30", "31", "31", "30", "31", "30", "31"};
     string mes;
-    int dias;
     bool entradaValida = false;
+
+    while (!entradaValida) {
         cout << "Digite o nome de um mês: ";
-        cin >> mes;
-        for (int i = 0; i < mes.length(); i++) {
-            mes[i] = tolower(mes[i]);
-        }
-        if (mes == "janeiro" || mes == "março" || mes == "maio" || mes == "julho" || mes == "agosto" || mes == "outubro" || mes == "dezembro") {
-            dias = 31;
-        } else if (mes == "abril" || mes == "junho" || mes == "setembro" || mes == "novembro") {
-            dias = 30;
-        } else if (mes == "fevereiro") {
-            dias = 28;
+        getline(cin, mes);
+
+        transform(mes.begin(), mes.end(), mes.begin(), ::tolower);
+
+        auto it = find(meses.begin(), meses.end(), mes);
+        if (it != meses.end()) {
+            entradaValida = true;
+            int index = distance(meses.begin(), it);
+            cout << "O mês de " << mes << " tem " << dias[index] << " dias." << endl;
         } else {
-            cout << "Erro: Entrada inválida. Por favor, digite o nome de um mês." << endl;
+            cout << "Erro: Entrada inválida. Por favor, digite um mês válido." << endl;
         }
-        cout << "O mês de " << mes << " tem " << dias << " dias." << endl;
-    return 0;
     }
+
+    return 0;
+}

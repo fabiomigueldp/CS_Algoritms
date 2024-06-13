@@ -3,3 +3,4 @@ classificado como equilátero (quando os três lados tem o mesmo tamanho), isós
 apenas dois lados são iguais) ou escaleno (quando os três lados são diferentes). Escreva um
 programa Python que recebe do usuário os comprimentos dos 3 lados de um triângulo e exiba
 uma mensagem informando qual é o tipo do triângulo.*/
+
