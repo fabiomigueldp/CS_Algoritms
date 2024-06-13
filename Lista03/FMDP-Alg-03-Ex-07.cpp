@@ -12,3 +12,39 @@ Se o usuário entrar um valor intermediário entre dois valores da tabela, entã
 deve exibir uma mensagem informando que o nível está entre os dois barulhos (deve informar
 quais são eles). Certifique-se também que seu programa exiba mensagens apropriadas caso o
 usuário entre com valor menor que o menor valor da tabela ou maior que o maior valor.*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int nivelDecibeis;
+    string tipoBarulho;
+
+    cout << "Digite o nível de volume em decibéis: ";
+    cin >> nivelDecibeis;
+
+    if (nivelDecibeis == 130) {
+        tipoBarulho = "Britadeira";
+    } else if (nivelDecibeis == 106) {
+        tipoBarulho = "Cortador de grama";
+    } else if (nivelDecibeis == 70) {
+        tipoBarulho = "Despertador";
+    } else if (nivelDecibeis == 40) {
+        tipoBarulho = "Sala silenciosa";
+    } else if (nivelDecibeis > 130) {
+        tipoBarulho = "maior que o nível de barulho mais alto da tabela";
+    } else if (nivelDecibeis < 40) {
+        tipoBarulho = "menor que o nível de barulho mais baixo da tabela";
+    } else if (nivelDecibeis > 106 && nivelDecibeis < 130) {
+        tipoBarulho = "entre Cortador de grama e Britadeira";
+    } else if (nivelDecibeis > 70 && nivelDecibeis < 106) {
+        tipoBarulho = "entre Despertador e Cortador de grama";
+    } else if (nivelDecibeis > 40 && nivelDecibeis < 70) {
+        tipoBarulho = "entre Sala silenciosa e Despertador";
+    }
+
+    cout << "O nível de volume de " << nivelDecibeis << " dB é equivalente ao barulho de " << tipoBarulho << "." << endl;
+
+    return 0;
+}

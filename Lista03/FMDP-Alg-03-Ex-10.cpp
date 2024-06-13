@@ -28,3 +28,36 @@ exemplo, se o usuário entrou com o valor a1, então seu programa deve informar 
 quadrado é preto. Se o usuário entrou com o valor d5, então seu programa deve informar que
 o quadrado é branco. Seu programa pode assumir que o usuário vai entrar valores válidos,
 não sendo necessário verificar eventuais erros de input.*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    string posicao;
+    string cor;
+
+    cout << "Digite a posição da casa do tabuleiro: ";
+    cin >> posicao;
+
+    char coluna = posicao[0];
+    int linha = posicao[1] - '0';
+
+    if (coluna == 'a' || coluna == 'c' || coluna == 'e' || coluna == 'g') {
+        if (linha % 2 == 0) {
+            cor = "preto";
+        } else {
+            cor = "branco";
+        }
+    } else {
+        if (linha % 2 == 0) {
+            cor = "branco";
+        } else {
+            cor = "preto";
+        }
+    }
+
+    cout << "A casa " << posicao << " é de cor " << cor << "." << endl;
+
+    return 0;
+}

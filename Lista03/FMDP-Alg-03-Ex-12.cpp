@@ -9,3 +9,29 @@ seguintes:
 • Todos os outros anos não são bissextos.
 Escreva um programa Python que recebe do usuário um ano, e exibe uma mensagem
 informando se o ano é ou não é bissexto.*/
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() {
+    int ano;
+    string tipoAno;
+
+    cout << "Digite um ano: ";
+    cin >> ano;
+
+    if (ano % 400 == 0) {
+        tipoAno = "bissexto";
+    } else if (ano % 100 == 0) {
+        tipoAno = "não é bissexto";
+    } else if (ano % 4 == 0) {
+        tipoAno = "bissexto";
+    } else {
+        tipoAno = "não é bissexto";
+    }
+
+    cout << "O ano " << ano << " " << tipoAno << "." << endl;
+
+    return 0;
+}

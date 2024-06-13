@@ -30,3 +30,26 @@ frequência e a nota A3 tem 220.00Hz. Tendo em mente estas relações, você con
 resolver o problema para todas as notas musicais adicionais sem incluir novos casos nos seus
 comandos condicionais.
 */
+
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <map>
+using namespace std;
+
+int main() {
+    map<string, double> frequencias = {
+        {"C4", 261.63},
+        {"D4", 293.66},
+        {"E4", 329.63},
+        {"F4", 349.23},
+        {"G4", 392.00},
+        {"A4", 440.00},
+        {"B4", 493.88}
+    };
+    string nota;
+    cout << "Digite o nome de uma nota musical: ";
+    cin >> nota;
+    cout << "A frequência da nota " << nota << " é " << frequencias[nota] << "Hz." << endl;
+    return 0;
+}
