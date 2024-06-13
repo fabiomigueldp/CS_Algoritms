@@ -3,9 +3,6 @@
 // siga os seguintes passos:
 // a) Escreva o seguinte código Python, que lê e exibe os argumentos passados em linha de
 // comando (no meu caso, eu chamei este programa de exemplo.py):
-// b) Faça um teste de execução do seu programa em linha de comando. A imagem abaixo 
-// mostra um teste realizado pelo professor, passando argumentos a, b, e c com o seguinte 
-// comando: python3 exemplo.py a b c
 
 // Exemplo de código:
 // import sys 
@@ -14,9 +11,30 @@
 //     for i, arg in enumerate(sys.argv): 
 //         print(f"Argumento {i}: {arg}")
 
+// b) Faça um teste de execução do seu programa em linha de comando. A imagem abaixo 
+// mostra um teste realizado pelo professor, passando argumentos a, b, e c com o seguinte 
+// comando: python3 exemplo.py a b c
+
 // Exemplo de saída do programa, executado em linha de comando:
 // Número de argumentos: 4
 // Argumento 0: exemplo.py
 // Argumento 1: a
 // Argumento 2: b
 // Argumento 3: c
+
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <numeric>
+#include <cmath>
+using namespace std;
+
+int main(int argc, char *argv[]) {
+    vector<string> args(argv, argv + argc);
+    cout << "Número de argumentos: " << args.size() << endl;
+    for (int i = 0; i < args.size(); i++) {
+        cout << "Argumento " << i << ": " << args[i] << endl;
+    }
+    return 0;
+}
