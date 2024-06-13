@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "ios": "cpp",
-        "limits": "cpp"
+        "limits": "cpp",
+        "*.tcc": "cpp"
     }
 }

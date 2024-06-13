@@ -7,3 +7,28 @@
 // arquivo não puder ser lido, e então passa para a leitura do próximo arquivo. O programa também deve 
 // exibir mensagem de erro caso não tenha sido passado nenhum argumento para o programa em linha de 
 // comando.
+
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        cerr << "Erro: nenhum argumento passado para o programa." << endl;
+        return 1;
+    }
+    for (int i = 1; i < argc; i++) {
+        ifstream file(argv[i]);
+        if (!file.is_open()) {
+            cerr << "Erro: arquivo não encontrado." << endl;
+            continue;
+        }
+        string line;
+        while (getline(file, line)) {
+            cout << line << endl;
+        }
+    }
+    return 0;
+}
